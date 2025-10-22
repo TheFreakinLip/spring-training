@@ -9,13 +9,16 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @RestController
-@RequestMapping("api/agent")
+@RequestMapping("lantai4/api/agent")
 @CrossOrigin(origins = "http://localhost:8080")
-public class DummyStreamController {
+public class DummyStreamController2 {
     private final AtomicBoolean inventoryRunning = new AtomicBoolean(false);
     private final List<String> epcList = List.of(
 //            "32 30 32 35 2F 30 33 35 39 31",
@@ -52,35 +55,7 @@ public class DummyStreamController {
 //            "42 4F 58 41 33 41 31 36 37 39 30 36"
 
 //            "42 4F 58 31 37 32 45 38 32 45 43 30",
-//            "C3 A9 C3 B6 C3 BC",
-//            "41 42 43 0D 0A 44 45 46",
-//            "30 34 00 0A 9B 8C 12 34 00 00 00 01",
-//            "41 42 00 43 44",
-//            "41 02 43 44",
-//            "C3 41 42",
-//            "C3 A9 C3 B6 C3 BC",
-//            "42 4F 58 41 32 44 41 31 33 35 44 41",
-//            "42 4F 58 44 35 30 34 39 46 45 31 36",
-//            "42 4F 58 41 41 43 30 32 31 36 36 42",
-//            "42 4F 58 35 42 46 46 34 33 42 36 46",
-//            "42 4F 58 42 41 42 39 33 36 33 41 35",
-//            "42 4F 58 44 33 37 46 45 30 30 33 39",
-//            "42 4F 58 37 32 36 35 30 43 44 46 30",
-//            "42 4F 58 34 35 42 41 46 39 35 45 31",
-//            "42 4F 58 41 35 42 35 36 30 46 37 36",
-//            "42 4F 58 41 38 44 37 36 39 36 36 30",
-//            "42 4F 58 31 37 32 45 38 32 45 43 30",
-//            "42 4F 58 41 32 44 41 31 33 35 44 41",
-//            "42 4F 58 44 35 30 34 39 46 45 31 36",
-//            "42 4F 58 41 41 43 30 32 31 36 36 42",
-//            "42 4F 58 35 42 46 46 34 33 42 36 46",
-//            "42 4F 58 42 41 42 39 33 36 33 41 35",
-//            "42 4F 58 44 33 37 46 45 30 30 33 39",
-//            "42 4F 58 37 32 36 35 30 43 44 46 30",
-//            "42 4F 58 34 35 42 41 46 39 35 45 31",
-//            "42 4F 58 41 35 42 35 36 30 46 37 36",
-//            "42 4F 58 41 38 44 37 36 39 36 36 30",
-//            "42 4F 58 31 37 32 45 38 32 45 43 30",
+////            "42 4F 58 37 43 41 41 30 32 44 46 32",
 //            "42 4F 58 41 32 44 41 31 33 35 44 41",
 //            "42 4F 58 44 35 30 34 39 46 45 31 36",
 //            "42 4F 58 41 41 43 30 32 31 36 36 42",
@@ -92,35 +67,8 @@ public class DummyStreamController {
 //            "42 4F 58 41 35 42 35 36 30 46 37 36",
 //            "42 4F 58 41 38 44 37 36 39 36 36 30"
 
-
-            // 1
-//            "42 4F 58 45 44 30 30 30 32 45 37 39",
-//            "42 4F 58 43 37 38 32 43 36 37 33 34",
-//            "42 4F 58 45 36 46 31 41 35 45 45 44"
-            // 2
-//            "42 4F 58 31 42 44 42 44 46 34 34 31",
-//            "42 4F 58 41 44 39 44 35 35 44 32 34",
-//            "42 4F 58 34 46 32 44 38 38 36 46 32"
-
-            // Faktur
-//            "32 30 32 35 2F 30 33 36 33 32"
-
-//            "42 4F 58 32 41 39 36 42 30 31 42 38",
-//            "42 4F 58 42 44 31 33 35 32 41 38 35",
-//            "42 4F 58 46 41 37 32 30 37 31 42 30",
-//            "42 4F 58 39 32 32 33 30 43 30 39 31",
-//            "42 4F 58 39 30 44 37 36 30 33 34 34",
-//            "42 4F 58 46 36 43 36 42 41 44 33 30"
-
-            "42 4F 58 41 42 39 38 39 44 33 38 33",
-            "42 4F 58 44 35 46 41 36 41 43 33 45",
-            "42 4F 58 35 33 38 30 35 42 46 43 30",
-            "42 4F 58 34 42 38 30 35 34 36 30 33",
-            "42 4F 58 33 45 41 34 44 41 37 43 35",
-            "42 4F 58 39 41 44 36 43 41 30 41 33",
-            "39 10 01 01"
-
-
+            "32 30 32 35 2F 30 33 36 33 35",
+            "32 30 32 35 2F 30 33 36 33 34"
     );
 
     @PostMapping("/commandAgent")
@@ -157,7 +105,7 @@ public class DummyStreamController {
         List<Map<String, Object>> currentTags = new ArrayList<>();
         System.out.println("Stream invoked")          ;
 
-        return Flux.interval(Duration.ofMillis(1000))
+        return Flux.interval(Duration.ofSeconds(2))
 //                .takeUntil(tick -> !inventoryRunning.get())
 //                .filter(tick -> inventoryRunning.get())
                 .map(tick -> {

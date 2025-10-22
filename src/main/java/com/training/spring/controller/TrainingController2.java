@@ -13,12 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("all")
 @RestController
-@RequestMapping("api")
+@RequestMapping("location/api")
 @CrossOrigin(origins = "http://localhost:8080")
-public class TrainingController {
-
+public class TrainingController2 {
     private final Map<String, Product> productMap = new HashMap<>();
 
     @GetMapping("getProducts")
@@ -58,7 +56,7 @@ public class TrainingController {
         int i = 0;
         for (PrintRequest req : reqList.getItems()) {
             i++;
-            System.out.println("Print No " + i + " di lantai 1");
+            System.out.println("Print No " + i + " di lantai 4");
             System.out.println(req.getPrintDeskripsi());
             System.out.println(req.getPrintJudul());
             System.out.println(req.getRfidData());
