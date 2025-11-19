@@ -112,6 +112,9 @@ public class DummyStreamController {
             "42 4F 58 39 30 44 37 36 30 33 34 34",
             "42 4F 58 46 36 43 36 42 41 44 33 30",
             "ANJIIIIINGGGG",
+            "DEVDEVDEVDEV",
+            "HARUS DI MERGE",
+            "INI GABOLEH DI MERGE",
 
             "32 30 32 35 2F 30 33 36 34 30",
             "32 30 32 35 2F 30 33 36 33 39",
