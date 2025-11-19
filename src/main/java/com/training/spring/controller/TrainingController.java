@@ -21,6 +21,8 @@ public class TrainingController {
 
     private final Map<String, Product> productMap = new HashMap<>();
 
+    //ANJIIIIINGGG
+
     @GetMapping("getProducts")
     public ResponseEntity<Map<String, Product>> getProducts() {
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(productMap);
